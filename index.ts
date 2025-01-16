@@ -38,13 +38,10 @@ app.use(express.json());
 app.use(morgan("dev"));
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 const initApp = async (): Promise<void> => {
-  // init mongodb
+  
   await initDB();
 
-  // passport init
-  //initPassport();
-
-  // set base path to /api
+ 
   app.use("/api", routes);
 
   app.get("/", (req: Request, res: Response) => {
